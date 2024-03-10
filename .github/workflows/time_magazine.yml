@@ -8,7 +8,7 @@ on:
     - cron: '0 0 * * 4' # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
 
 env:
-  Edition_ID: ""
+  Edition_ID: "6548003"
   # Edition_ID: "6548003"
   # https://raw.githubusercontent.com/Monkfishare/TIME_magazine/main/TIME_magazine_database.txt
   # For past edition, check the Edition_ID number in the above txt file
