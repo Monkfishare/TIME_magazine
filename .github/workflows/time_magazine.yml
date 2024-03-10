@@ -7,13 +7,6 @@ on:
   schedule:
     - cron: '0 0 * * 4' # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule
 
-env:
-  Edition_ID: "6548003"
-  # Edition_ID: "6548003"
-  # https://raw.githubusercontent.com/Monkfishare/TIME_magazine/main/TIME_magazine_database.txt
-  # For past edition, check the Edition_ID number in the above txt file
-  # To fetch magazine in 2023-12-25, input Edition_ID: "6548003"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,7 +26,7 @@ jobs:
       - name: Fetch Magazine Epub
         run: |
           wget https://raw.githubusercontent.com/kovidgoyal/calibre/master/recipes/time_magazine.recipe -O time_magazine.recipe
-          sed -i "s|https://time.com/magazine|https://time.com/magazine/us/${Edition_ID}|" time_magazine.recipe
+          python replace.py
           ebook-convert time_magazine.recipe output.epub
           ebook-meta output.epub > epub_metadata.txt
           ebook-meta output.epub --get-cover=cover.jpg
