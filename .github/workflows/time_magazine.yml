@@ -47,13 +47,13 @@ jobs:
               --base-font-size 13 \
               --extra-css "styles.css"
 
-      # - name: Compress PDF
-      #   run: |
-      #     pip install pdf-compressor
-      #     pdf-compressor --set-api-key ${{ secrets.PDF_COMPRESSOR_API_KEY }}
-      #     pdf-compressor --compression-level low -i output.pdf
-      #   env:
-      #     PDF_COMPRESSOR_API_KEY: ${{ secrets.PDF_COMPRESSOR_API_KEY }}
+      - name: Compress PDF
+        run: |
+          pip install pdf-compressor
+          pdf-compressor --set-api-key ${{ secrets.PDF_COMPRESSOR_API_KEY }}
+          pdf-compressor --compression-level low -i output.pdf
+        env:
+          PDF_COMPRESSOR_API_KEY: ${{ secrets.PDF_COMPRESSOR_API_KEY }}
 
       - name: Create TIME Magazine folder
         run: |
