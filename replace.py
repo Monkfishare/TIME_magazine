@@ -1,6 +1,6 @@
 recipe_path = "time_magazine.recipe"
 
-Edition_ID = "6272108"
+Edition_ID = "6267624"
 # For past edition, for example, Edition_ID = '6548003'
 # https://raw.githubusercontent.com/Monkfishare/TIME_magazine/main/TIME_magazine_database.txt
 
