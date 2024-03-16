@@ -34,7 +34,7 @@ jobs:
       - name: Extract and Print Published Date
         run: |
           full_title_date=$(grep "Title" epub_metadata.txt | awk -F'[][]' '{print $2}')
-          cleaned_date=$(echo "$full_title_date" | sed 's/th\|st\|nd\|rd//g')
+          cleaned_date=$(echo "$full_title_date" | sed 's/th\|st\|nd\|rd//g; s/Augu /August /')
           date_only=$(date -d "$cleaned_date" +"%Y-%m-%d")
           echo "$date_only" > published_date.txt
           sed -i "s/^Published\s*:.*/Published           : $date_only/" epub_metadata.txt
