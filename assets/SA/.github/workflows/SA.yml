@@ -20,11 +20,13 @@ jobs:
       - name: Install Calibre
         run: |
           sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
-          python month_SA.py
+          pip install requests bs4
+          python SAdate.py
 
       - name: Fetch Magazine Epub
         run: |
-          wget https://raw.githubusercontent.com/kovidgoyal/calibre/master/recipes/scientific_american.recipe -O SA.recipe
+          # wget https://raw.githubusercontent.com/kovidgoyal/calibre/master/recipes/scientific_american.recipe -O SA.recipe
+          wget https://gitlab.com/Monkfishare/recipe/-/raw/main/scientific_american.recipe -O SA.recipe
           python replace_SA.py
           ebook-convert SA.recipe output.epub
           ebook-meta output.epub > epub_metadata.txt
