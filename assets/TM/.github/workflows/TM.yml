@@ -10,7 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:      
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -40,7 +40,7 @@ jobs:
           ebook-meta output_raw.epub > epub_metadata.txt
           ebook-meta output_raw.epub --get-cover=cover.jpg
 
-      - name: Clean Epub
+      - name: Cleanup Epub
         run: |
           unzip -o output_raw.epub -d output_folder
           find output_folder -type f -name "*.html" -exec sed -i -E 's|<h3[^>]*>More From TIME</h3>||g; s|<div[^>]*>.*video id.*</div>||g' {} \;

@@ -8,7 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:      
+    steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -22,7 +22,7 @@ jobs:
         run: |
           sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
           python3 -m venv venv
-          source venv/bin/activate          
+          source venv/bin/activate
           pip install requests bs4
           python SAdate.py
 
@@ -35,10 +35,10 @@ jobs:
           ebook-meta output_raw.epub > epub_metadata.txt
           ebook-meta output_raw.epub --get-cover=cover.jpg
 
-      - name: Clean Epub
+      - name: Cleanup Epub
         run: |
           unzip -o output_raw.epub -d output_folder
-          find output_folder -type f -name "*.html" -exec sed -i 's|<hr[^>]*/><h4[^>]*>On supporting.*ideas shaping our world today.</p><hr[^>]*/>||g' {} \;          
+          find output_folder -type f -name "*.html" -exec sed -i 's|<hr[^>]*/><h4[^>]*>On supporting.*ideas shaping our world today.</p><hr[^>]*/>||g' {} \;
           find output_folder -type f -name "*.html" -exec sed -i 's|<hr class="calibre.\{1,2\}" data-block="sciam/raw_html"/>||g' {} \;
           find output_folder -type f -name "*.html" -exec sed -i 's|This article was downloaded by <strong[^>]*>calibre</strong> from ||g' {} \;
           zip -r output.epub output_folder && rm -rf output_folder
