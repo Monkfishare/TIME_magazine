@@ -13,8 +13,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Pull latest changes
-        run: git pull origin main
 
       - name: Download zip file
         run: |
